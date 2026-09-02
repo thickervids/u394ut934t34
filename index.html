@@ -3,54 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Your landing page">
 <title>Your Landing Page</title>
+<link rel="icon" type="image/png" href="favicon.png">
+
 <style>
+:root{
+  --font-family:'Poppins',Arial,sans-serif;
+  --color-text:#fff;
+}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#111;color:#fff}
-.page{min-height:100vh;position:relative;overflow:hidden;background:linear-gradient(135deg,#151515,#303030)}
-.bg{position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.68)),radial-gradient(circle at 50% 25%,#555,#222 48%,#111)}
-.wrap{position:relative;z-index:2;width:100%;max-width:720px;margin:auto;padding:35px 16px 50px}
-header{text-align:center}
-.logo{width:82px;height:82px;border-radius:50%;margin:auto;display:flex;align-items:center;justify-content:center;background:#333;border:2px solid #fff;font-weight:bold}
-h1{font-size:24px;margin:14px 0 6px}
-.sub{font-size:14px;color:#ccc;margin-bottom:25px}
-.video-box{width:100%;aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.45)}
-.video-box video{width:100%;height:100%;display:block;object-fit:cover}
-.buttons{margin-top:22px}
-.btn{display:block;text-decoration:none;background:#fff;color:#111;text-align:center;font-weight:700;padding:17px;border-radius:35px;margin:13px 0}
-footer{text-align:center;color:#999;font-size:12px;margin-top:28px}
-@media(max-width:480px){
-.wrap{padding:25px 12px 40px}
-h1{font-size:21px}
-.video-box{border-radius:10px}
-.btn{padding:15px}
+html,body{margin:0;width:100%;min-height:100%;font-family:var(--font-family)}
+body{overflow-x:hidden;background:#111}
+
+.page-container{
+  position:relative;
+  width:100%;
+  min-height:100vh;
+  overflow:hidden;
+  color:#fff;
+  background:#111;
+}
+
+/* Background video: full screen + blur, matching the original theme */
+.page-theme-content{
+  position:fixed;
+  z-index:0;
+  top:50%;
+  left:50%;
+  width:100vw;
+  height:100vh;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  transform:translate(-50%,-50%) scale(1.08);
+  filter:blur(14px);
+  opacity:.78;
+  pointer-events:none;
+}
+
+/* Dark layer makes the content readable */
+.page-container::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:1;
+  background:rgba(0,0,0,.42);
+  pointer-events:none;
+}
+
+.page-wrap{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:720px;
+  min-height:100vh;
+  margin:0 auto;
+}
+
+.content{
+  padding:0 20px 100px;
+  min-height:calc(100vh - 10rem);
+}
+
+.page-header{
+  text-align:center;
+  padding-top:1px;
+}
+
+.profile-pic{
+  display:block;
+  width:100px;
+  height:100px;
+  margin:0 auto;
+  border-radius:10000px;
+  border:2px solid #fff;
+  object-fit:cover;
+  margin-top:65px;
+}
+
+.header-title{
+  color:#fff;
+  margin-top:16px;
+  padding:10px;
+  font-size:21px;
+  font-weight:600;
+}
+
+.header-subtitle{
+  margin-top:8px;
+  color:#fff;
+  font-size:16px;
+  opacity:.7;
+  padding:0 40px;
+}
+
+.user-blocks{
+  margin-top:8px;
+}
+
+.user-block{
+  margin-top:2rem;
+  margin-bottom:2rem;
+}
+
+.user-block a{
+  display:block;
+  color:#000;
+  text-decoration:none;
+}
+
+.content-btn{
+  position:relative;
+  display:flex;
+  width:100%;
+  min-height:60px;
+  align-items:center;
+  justify-content:center;
+  padding:8px;
+  margin:16px 0;
+  border-radius:36px;
+  background:#fff;
+  color:#000;
+  box-shadow:none;
+  transition:transform .2s ease,opacity .2s ease;
+}
+
+.content-btn:hover{
+  transform:translateY(-2px);
+  opacity:.95;
+}
+
+.text-content{
+  width:100%;
+  text-align:center;
+  margin:16px;
+  font-size:18px;
+  font-weight:700;
+}
+
+/* Animated border like the original */
+.animated-border::before,
+.animated-border::after{
+  content:"";
+  position:absolute;
+  top:-10px;
+  left:-10px;
+  right:-10px;
+  bottom:-10px;
+  border:2px solid rgba(255,255,255,.8);
+  border-radius:36px;
+  pointer-events:none;
+  animation:clippath 3s infinite linear;
+}
+.animated-border::after{
+  animation-delay:-1.5s;
+}
+
+@keyframes clippath{
+  0%,100%{clip-path:inset(0 0 96% 0 round 36px)}
+  25%{clip-path:inset(0 96% 0 0 round 36px)}
+  50%{clip-path:inset(96% 0 0 0 round 36px)}
+  75%{clip-path:inset(0 0 0 96% round 36px)}
+}
+
+footer{
+  position:relative;
+  z-index:2;
+  width:100%;
+  text-align:center;
+  padding:20px;
+  color:rgba(255,255,255,.55);
+  font-size:11px;
+}
+
+@media(max-width:500px){
+  .page-theme-content{
+    width:100vw;
+    height:100vh;
+    transform:translate(-50%,-50%) scale(1.12);
+    filter:blur(12px);
+  }
+  .content{
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .profile-pic{
+    width:100px;
+    height:100px;
+    margin-top:65px;
+  }
+  .header-title{font-size:21px}
+  .text-content{font-size:18px}
 }
 </style>
 </head>
+
 <body>
-<div class="page">
-<div class="bg"></div>
-<div class="wrap">
-<header>
-<div class="logo">LOGO</div>
-<h1>Your Landing Page</h1>
-<div class="sub">Replace this text with your own description.</div>
-</header>
+<div class="page-container">
 
-<div class="video-box">
-<video controls playsinline preload="metadata">
-<source src="video.mp4" type="video/mp4">
-Your browser does not support HTML5 video.
-</video>
-</div>
+  <video class="page-theme-content" autoplay muted loop playsinline preload="auto">
+    <source src="background-video.mp4" type="video/mp4">
+  </video>
 
-<div class="buttons">
-<a class="btn" href="#">CONTINUE</a>
-<a class="btn" href="#">LEARN MORE</a>
-</div>
+  <div class="page-wrap">
+    <div class="content">
 
-<footer>© 2026 Your Website</footer>
-</div>
+      <header class="page-header">
+        <img class="profile-pic" src="profile.png" alt="Profile">
+
+        <div class="header-title">
+          Your Landing Page
+        </div>
+
+        <div class="header-subtitle">
+          Replace this text with your own description.
+        </div>
+      </header>
+
+      <section class="user-blocks">
+
+        <div class="user-block">
+          <a href="#" rel="nofollow noopener noreferrer">
+            <div class="content-btn animated-border">
+              <div class="text-content">CONTINUE</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="user-block">
+          <a href="#" rel="nofollow noopener noreferrer">
+            <div class="content-btn">
+              <div class="text-content">LEARN MORE</div>
+            </div>
+          </a>
+        </div>
+
+      </section>
+    </div>
+
+    <footer>© 2026 Your Website</footer>
+  </div>
 </div>
 </body>
 </html>
