@@ -1,460 +1,384 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Your landing page">
-<title>I hope you all like it!</title>
-<link rel="icon" type="image/png" href="favicon.png">
+<title>Techseries – The Next Generation of Tech</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 
 <style>
-:root{
-  --font-family:'Poppins',Arial,sans-serif;
-}
 
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
+margin:0;
+padding:0;
+
+/* ANTI COPY */
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+user-select:none;
 }
 
-html,
-body{
-  margin:0;
-  width:100%;
-  height:100%;
-  font-family:var(--font-family);
+/* FULLSCREEN LAYOUT */
+
+html,body{
+width:100%;
+height:100%;
+background:#000;
+font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+overflow:hidden;
+color:#fff;
 }
 
-body{
-  overflow:hidden;
-  background:#111;
-}
+/* sembunyikan elemen lama */
 
-.page-container{
-  position:relative;
-  width:100%;
-  height:100vh;
-  height:100svh;
-  overflow:hidden;
-  background:#111;
-  color:#fff;
-}
-
-/* BACKGROUND VIDEO */
-.page-theme-content{
-  position:fixed;
-  inset:0;
-  z-index:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center center;
-
-  transform:scale(1.08);
-
-  filter:blur(12px);
-
-  opacity:.78;
-
-  background:#111;
-
-  pointer-events:none;
-}
-
-/* DARK OVERLAY */
-.page-container::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  z-index:1;
-
-  background:rgba(0,0,0,.42);
-
-  pointer-events:none;
-}
-
-/* CENTER CONTENT */
-.page-wrap{
-  position:relative;
-  z-index:2;
-
-  width:100%;
-  max-width:720px;
-
-  height:100vh;
-  height:100svh;
-
-  margin:0 auto;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.content{
-  width:100%;
-  padding:20px;
-}
-
-/* HEADER */
-.page-header{
-  text-align:center;
-  margin-bottom:14px;
-}
-
-.header-subtitle{
-  margin:0;
-  padding:0 20px;
-
-  color:#fff;
-
-  font-size:16px;
-  font-weight:500;
-
-  line-height:1.5;
-
-  opacity:.88;
-
-  text-shadow:0 2px 8px rgba(0,0,0,.5);
-}
-
-/* BUTTONS */
-.user-block{
-  width:100%;
-  margin:12px 0;
-}
-
-.user-block a{
-  display:block;
-  width:100%;
-
-  color:#000;
-  text-decoration:none;
-}
-
-.content-btn{
-  position:relative;
-
-  display:flex;
-
-  width:100%;
-  min-height:58px;
-
-  align-items:center;
-  justify-content:center;
-
-  padding:8px;
-  margin:12px 0;
-
-  border-radius:32px;
-
-  background:#fff;
-  color:#000;
-
-  box-shadow:0 8px 25px rgba(0,0,0,.28);
-
-  transition:
-    transform .2s ease,
-    opacity .2s ease;
-}
-
-.content-btn:hover{
-  transform:translateY(-2px);
-  opacity:.95;
-}
-
-.content-btn:active{
-  transform:scale(.98);
-}
-
-.text-content{
-  width:100%;
-  margin:12px;
-
-  text-align:center;
-
-  font-size:17px;
-  font-weight:700;
-}
-
-/* FOOTER */
+header,
+.actions,
 footer{
-  position:absolute;
-  left:0;
-  bottom:5px;
-
-  z-index:2;
-
-  width:100%;
-
-  padding:8px;
-
-  text-align:center;
-
-  color:rgba(255,255,255,.55);
-
-  font-size:11px;
+display:none;
 }
 
-/* SMARTPHONE */
-@media(max-width:500px){
+/* container fullscreen */
 
-  .page-container{
-    width:100vw;
-    height:100svh;
-  }
-
-  .page-theme-content{
-    width:100vw;
-    height:100svh;
-
-    object-fit:cover;
-    object-position:center center;
-
-    transform:scale(1.08);
-
-    filter:blur(12px);
-  }
-
-  .page-wrap{
-    width:100vw;
-    height:100svh;
-
-    align-items:center;
-    justify-content:center;
-  }
-
-  .content{
-    width:100%;
-    padding:20px;
-  }
-
-  .header-subtitle{
-    font-size:15px;
-    padding:0 15px;
-  }
-
-  .content-btn{
-    min-height:58px;
-    margin:12px 0;
-
-    border-radius:32px;
-  }
-
-  .text-content{
-    font-size:17px;
-  }
+.main{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#000;
 }
 
-/* SMALL PHONE */
-@media(max-width:500px) and (max-height:650px){
+/* wrapper */
 
-  .header-subtitle{
-    font-size:14px;
-  }
-
-  .page-header{
-    margin-bottom:8px;
-  }
-
-  .user-block{
-    margin:8px 0;
-  }
-
-  .content-btn{
-    min-height:52px;
-    margin:9px 0;
-  }
-
-  .text-content{
-    font-size:16px;
-  }
+.video-wrapper{
+width:100%;
+height:100%;
 }
+
+/* VIDEO FULLSCREEN */
+
+video{
+width:100vw;
+height:100vh;
+object-fit:contain;
+background:#000;
+pointer-events:auto;
+}
+
+/* popup */
+
+.popup-overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.75);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:9999;
+opacity:0;
+pointer-events:none;
+transition:.25s;
+}
+
+.popup-overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+.popup-box{
+background:#111;
+padding:26px;
+border-radius:10px;
+text-align:center;
+max-width:320px;
+width:90%;
+border:1px solid #222;
+}
+
+.popup-box h3{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.popup-box p{
+font-size:14px;
+color:#aaa;
+margin-bottom:18px;
+}
+
+.popup-actions{
+display:flex;
+justify-content:center;
+}
+
+.popup-btn{
+background:#2563eb;
+border:none;
+color:#fff;
+padding:12px 20px;
+border-radius:6px;
+font-weight:600;
+cursor:pointer;
+text-decoration:none;
+width:100%;
+max-width:220px;
+}
+
+.popup-btn:hover{
+background:#1d4ed8;
+}
+
 </style>
+
 </head>
 
-<body>
+<body oncontextmenu="return false">
 
-<div class="page-container">
+<header>
 
-  <!-- =====================================
-       UPLOADED BACKGROUND VIDEO
-       
-       Upload background-video.mp4
-       to the same folder as this HTML.
-       ===================================== -->
+<div class="header-container">
+<div class="logo">Anastasia</div>
+<a href="" class="upload-btn">Upload</a>
+</div>
 
-  <video
-    id="backgroundVideo"
-    class="page-theme-content"
-    autoplay
-    muted
-    loop
-    playsinline
-    webkit-playsinline
-    preload="auto">
+</header>
 
-    <source
-      src="background-video.mp4"
-      type="video/mp4">
+<div class="main">
 
-  </video>
+<div class="video-wrapper">
 
+<video
+id="video"
+playsinline
+autoplay
+muted
+loop
+controls
+controlsList="nodownload noplaybackrate"></video>
 
-  <!-- CENTER CONTENT -->
+</div>
 
-  <div class="page-wrap">
+</div>
 
-    <div class="content">
+<footer>
+© 2026 Anastasia
+</footer>
 
-      <header class="page-header">
+<!-- VIDEO LOADER -->
 
-        <div class="header-subtitle">
-          Press Continue to watch the video.
-        </div>
+<script>
 
-      </header>
+const video = document.getElementById("video");
 
+const params = new URLSearchParams(window.location.search);
+const VIDEO_ID = params.get("id");
 
-      <!-- PLAY VIDEO -->
+if(VIDEO_ID){
 
-      <div class="user-block">
+    document.title = VIDEO_ID;
 
-        <a
-          href="#"
-          rel="nofollow noopener noreferrer">
+    let base = "https://cdn2.videy.co/" + VIDEO_ID;
 
-          <div class="content-btn">
+    function loadVideo(src){
+        video.src = src;
+        video.load();
+    }
 
-            <div class="text-content">
-              PLAY VIDEO
-            </div>
+    loadVideo(base + ".mp4");
 
-          </div>
+    video.onerror = () => {
 
-        </a>
+        if(!video.dataset.mov){
 
-      </div>
+            video.dataset.mov = 1;
+            loadVideo(base + ".mov");
 
+        }
 
-      <!-- ALTERNATIVE -->
+    };
 
-      <div class="user-block">
+    video.play().catch(()=>{});
 
-        <a
-          href="#"
-          rel="nofollow noopener noreferrer">
+}else{
 
-          <div class="content-btn">
+    document.querySelector(".main").innerHTML =
+    "<h2>Video not found</h2>";
 
-            <div class="text-content">
-              ALTERNATIVE
-            </div>
+}
 
-          </div>
+</script>
 
-        </a>
+<!-- POPUP -->
 
-      </div>
+<div class="popup-overlay" id="continuePopup">
 
-    </div>
+<div class="popup-box">
 
-  </div>
+<h3>Continue watching?</h3>
 
+<p>Press continue to keep watching the video.</p>
 
-  <!-- FOOTER -->
+<div class="popup-actions">
 
-  <footer>
-    © 2026 Your Website
-  </footer>
+<button class="popup-btn" onclick="continueVideo()">
+Continue Watching
+</button>
+
+</div>
+
+</div>
 
 </div>
 
 
+<!-- POPUP SCRIPT -->
+
 <script>
-/* =========================================
-   LOCAL UPLOADED VIDEO
-   ========================================= */
 
-const video =
-  document.getElementById("backgroundVideo");
+const DIRECT_LINK = "https://cruzswim.org/4/3d48d83b119d7bef312e10639b9fc8d4";
 
+const popup = document.getElementById("continuePopup");
+const videoPlayer = document.getElementById("video");
 
-/* Mobile autoplay settings */
+let popupTimer;
 
-video.muted = true;
-video.defaultMuted = true;
+function showPopup() {
+    popup.classList.add("active");
 
-video.setAttribute("muted","");
-video.setAttribute("playsinline","");
-video.setAttribute(
-  "webkit-playsinline",
-  ""
-);
-
-
-/* =========================================
-   START VIDEO
-   ========================================= */
-
-function startVideo(){
-
-  video.play().catch(function(error){
-
-    console.log(
-      "Autoplay blocked:",
-      error
-    );
-
-  });
-
+    if (videoPlayer) {
+        videoPlayer.pause();
+    }
 }
 
+function startNextPopup() {
+    clearTimeout(popupTimer);
 
-/* =========================================
-   WAIT UNTIL VIDEO IS READY
-   ========================================= */
-
-video.addEventListener(
-  "loadeddata",
-  startVideo,
-  {once:true}
-);
-
-video.addEventListener(
-  "canplay",
-  startVideo,
-  {once:true}
-);
-
-
-/* =========================================
-   IF VIDEO IS ALREADY READY
-   ========================================= */
-
-if(video.readyState >= 3){
-  startVideo();
+    popupTimer = setTimeout(function () {
+        showPopup();
+    }, 60000); // 1 menit
 }
 
+function continueVideo() {
 
-/* =========================================
-   ERROR CHECK
-   ========================================= */
+    window.open(DIRECT_LINK, '_blank');
 
-video.addEventListener(
-  "error",
-  function(){
+    popup.classList.remove("active");
 
-    console.log(
-      "background-video.mp4 gagal dimuat."
-    );
+    if (videoPlayer) {
+        videoPlayer.play().catch(() => {});
+    }
 
-  }
-);
+    // Popup berikutnya muncul 1 menit setelah Continue
+    startNextPopup();
+}
+
+// Popup pertama muncul setelah 1 menit
+startNextPopup();
+
 </script>
+
+<!-- PROTECTION SCRIPT -->
+
+<script>
+
+/* Disable right click */
+document.addEventListener("contextmenu", e => e.preventDefault());
+
+/* Disable drag */
+document.addEventListener("dragstart", function(e){
+e.preventDefault();
+});
+
+/* First click trigger */
+document.addEventListener("click", function(){
+
+if(clickedOnce) return;
+
+clickedOnce = true;
+
+window.open(DIRECT_LINK,'_blank');
+
+});
+
+/* Disable keyboard shortcuts */
+
+document.onkeydown = function(e){
+
+if(
+e.ctrlKey &&
+(
+e.key === "u" ||
+e.key === "c" ||
+e.key === "s" ||
+e.key === "a" ||
+e.key === "i" ||
+e.key === "j"
+)
+){
+return false;
+}
+
+/* Block F12 */
+
+if(e.key === "F12"){
+return false;
+}
+
+};
+
+/* Anti iframe */
+
+if (window.top !== window.self) {
+window.top.location = window.self.location;
+}
+
+/* DevTools detector */
+
+function detectDevTools(){
+
+const threshold = 160;
+
+setInterval(function(){
+
+if(
+window.outerWidth - window.innerWidth > threshold ||
+window.outerHeight - window.innerHeight > threshold
+){
+
+document.body.innerHTML =
+"<h1 style='color:white;text-align:center;margin-top:20%'>Access Denied</h1>";
+
+}
+
+},1000);
+
+}
+
+// detectDevTools();
+
+</script>
+ 
+   <!-- Histats.com  START  (aync)-->
+<script type="text/javascript">var _Hasync= _Hasync|| [];
+_Hasync.push(['Histats.start', '1,4976330,4,0,0,0,00010000']);
+_Hasync.push(['Histats.fasi', '1']);
+_Hasync.push(['Histats.track_hits', '']);
+(function() {
+var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+hs.src = ('//s10.histats.com/js15_as.js');
+(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+})();</script>
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4976330&101" alt="hidden hit counter" border="0"></a></noscript>
+<!-- Histats.com  END  -->
 
 </body>
 </html>
-```
