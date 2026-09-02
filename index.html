@@ -25,7 +25,6 @@ body{overflow-x:hidden;background:#111}
   background:#111;
 }
 
-/* Background video: full screen + blur, matching the original theme */
 .page-theme-content{
   position:fixed;
   z-index:0;
@@ -42,7 +41,6 @@ body{overflow-x:hidden;background:#111}
   pointer-events:none;
 }
 
-/* Dark layer makes the content readable */
 .page-container::after{
   content:"";
   position:fixed;
@@ -142,7 +140,6 @@ body{overflow-x:hidden;background:#111}
   font-weight:700;
 }
 
-/* Animated border like the original */
 .animated-border::before,
 .animated-border::after{
   content:"";
@@ -156,6 +153,7 @@ body{overflow-x:hidden;background:#111}
   pointer-events:none;
   animation:clippath 3s infinite linear;
 }
+
 .animated-border::after{
   animation-delay:-1.5s;
 }
@@ -184,15 +182,18 @@ footer{
     transform:translate(-50%,-50%) scale(1.12);
     filter:blur(12px);
   }
+
   .content{
     padding-left:20px;
     padding-right:20px;
   }
+
   .profile-pic{
     width:100px;
     height:100px;
     margin-top:65px;
   }
+
   .header-title{font-size:21px}
   .text-content{font-size:18px}
 }
@@ -200,6 +201,7 @@ footer{
 </head>
 
 <body>
+
 <div class="page-container">
 
   <video class="page-theme-content" autoplay muted loop playsinline preload="auto">
@@ -207,6 +209,7 @@ footer{
   </video>
 
   <div class="page-wrap">
+
     <div class="content">
 
       <header class="page-header">
@@ -218,29 +221,32 @@ footer{
         <div class="header-subtitle">
           Press Continue to watch the video.
         </div>
+
       </header>
 
-        <<div class="user-block">
-          <a href="#" rel="nofollow noopener noreferrer">
-            <div class="content-btn">
-              <div class="text-content">PLAY VIDEO</div>
-            </div>
-          </a>
-        </div>
+      <div class="user-block">
+        <a href="#" rel="nofollow noopener noreferrer">
+          <div class="content-btn">
+            <div class="text-content">PLAY VIDEO</div>
+          </div>
+        </a>
+      </div>
 
-        <div class="user-block">
-          <a href="#" rel="nofollow noopener noreferrer">
-            <div class="content-btn">
-              <div class="text-content">ALTERNATIVE</div>
-            </div>
-          </a>
-        </div>
+      <div class="user-block">
+        <a href="#" rel="nofollow noopener noreferrer">
+          <div class="content-btn">
+            <div class="text-content">ALTERNATIVE</div>
+          </div>
+        </a>
+      </div>
 
-      </section>
     </div>
 
     <footer>© 2026 Your Website</footer>
+
   </div>
+
 </div>
+
 </body>
 </html>
