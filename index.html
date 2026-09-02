@@ -25,15 +25,16 @@ body{
 }
 
 body{
-  overflow-x:hidden;
+  overflow:hidden;
   background:#111;
 }
 
+/* MAIN */
 .page-container{
   position:relative;
   width:100%;
-  min-height:100vh;
-  min-height:100svh;
+  height:100vh;
+  height:100svh;
   overflow:hidden;
   color:#fff;
   background:#111;
@@ -45,15 +46,23 @@ body{
   z-index:0;
   top:50%;
   left:50%;
+
   width:100vw;
   height:100vh;
-  min-width:100%;
-  min-height:100%;
+  height:100svh;
+
   object-fit:cover;
-  transform:translate(-50%,-50%) scale(1.08);
-  filter:blur(14px);
+
+  transform:
+    translate(-50%,-50%)
+    scale(1.12);
+
+  filter:blur(12px);
   opacity:.78;
+
   pointer-events:none;
+
+  background:#111;
 }
 
 /* DARK OVERLAY */
@@ -62,7 +71,9 @@ body{
   position:fixed;
   inset:0;
   z-index:1;
+
   background:rgba(0,0,0,.42);
+
   pointer-events:none;
 }
 
@@ -70,65 +81,85 @@ body{
 .page-wrap{
   position:relative;
   z-index:2;
+
   width:100%;
   max-width:720px;
-  min-height:100vh;
-  min-height:100svh;
+
+  height:100vh;
+  height:100svh;
+
   margin:0 auto;
 
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
 }
 
+/* CONTENT */
 .content{
   width:100%;
   padding:20px;
 }
 
+/* HEADER */
 .page-header{
   text-align:center;
-  padding:0;
+  margin-bottom:14px;
 }
 
 .header-subtitle{
-  margin:0 0 10px;
+  margin:0;
+
   color:#fff;
+
   font-size:16px;
   font-weight:500;
-  opacity:.85;
-  padding:0 20px;
+
   line-height:1.5;
-  text-shadow:0 2px 8px rgba(0,0,0,.4);
+
+  opacity:.85;
+
+  padding:0 20px;
+
+  text-shadow:
+    0 2px 8px rgba(0,0,0,.5);
 }
 
 /* BUTTON */
 .user-block{
+  width:100%;
   margin:12px 0;
 }
 
 .user-block a{
   display:block;
+
+  width:100%;
+
   color:#000;
   text-decoration:none;
 }
 
 .content-btn{
   position:relative;
+
   display:flex;
+
   width:100%;
   min-height:58px;
+
   align-items:center;
   justify-content:center;
+
   padding:8px;
-  margin:12px 0;
 
   border-radius:32px;
+
   background:#fff;
   color:#000;
 
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  box-shadow:
+    0 8px 25px rgba(0,0,0,.28);
 
   transition:
     transform .2s ease,
@@ -144,10 +175,14 @@ body{
   transform:scale(.98);
 }
 
+/* BUTTON TEXT */
 .text-content{
   width:100%;
-  text-align:center;
+
   margin:12px;
+
+  text-align:center;
+
   font-size:17px;
   font-weight:700;
 }
@@ -155,15 +190,20 @@ body{
 /* FOOTER */
 footer{
   position:absolute;
-  bottom:5px;
+
   left:0;
+  bottom:5px;
+
   z-index:2;
 
   width:100%;
-  text-align:center;
 
   padding:8px;
+
+  text-align:center;
+
   color:rgba(255,255,255,.55);
+
   font-size:11px;
 }
 
@@ -171,18 +211,25 @@ footer{
 @media(max-width:500px){
 
   .page-container{
-    min-height:100svh;
+    height:100svh;
   }
 
   .page-theme-content{
     width:100vw;
     height:100svh;
-    transform:translate(-50%,-50%) scale(1.12);
+
+    transform:
+      translate(-50%,-50%)
+      scale(1.12);
+
     filter:blur(12px);
   }
 
   .page-wrap{
-    min-height:100svh;
+    height:100svh;
+
+    display:flex;
+    align-items:center;
     justify-content:center;
   }
 
@@ -197,7 +244,7 @@ footer{
 
   .content-btn{
     min-height:58px;
-    margin:12px 0;
+    border-radius:32px;
   }
 
   .text-content{
@@ -205,16 +252,23 @@ footer{
   }
 }
 
-/* SMALL PHONE */
+/* SMALL SMARTPHONES */
 @media(max-height:650px){
 
   .header-subtitle{
     font-size:14px;
   }
 
+  .page-header{
+    margin-bottom:8px;
+  }
+
+  .user-block{
+    margin:8px 0;
+  }
+
   .content-btn{
     min-height:52px;
-    margin:9px 0;
   }
 
   .text-content{
@@ -236,108 +290,150 @@ footer{
     muted
     loop
     playsinline
-    preload="metadata"
-    webkit-playsinline>
+    webkit-playsinline
+    preload="metadata">
+
+    <source
+      src="https://cdn.videy.co/8X1yueep1.mp4"
+      type="video/mp4">
+
   </video>
 
+
+  <!-- CENTER CONTENT -->
   <div class="page-wrap">
 
     <div class="content">
 
       <header class="page-header">
+
         <div class="header-subtitle">
           Press Continue to watch the video.
         </div>
+
       </header>
+
 
       <!-- PLAY VIDEO -->
       <div class="user-block">
-        <a href="#" rel="nofollow noopener noreferrer">
+
+        <a
+          href="#"
+          rel="nofollow noopener noreferrer">
+
           <div class="content-btn">
+
             <div class="text-content">
               PLAY VIDEO
             </div>
+
           </div>
+
         </a>
+
       </div>
+
 
       <!-- ALTERNATIVE -->
       <div class="user-block">
-        <a href="#" rel="nofollow noopener noreferrer">
+
+        <a
+          href="#"
+          rel="nofollow noopener noreferrer">
+
           <div class="content-btn">
+
             <div class="text-content">
               ALTERNATIVE
             </div>
+
           </div>
+
         </a>
+
       </div>
 
     </div>
 
-    <footer>
-      © 2026 Your Website
-    </footer>
-
   </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Your Website
+  </footer>
 
 </div>
 
+
 <script>
-/* ==================================================
-   GANTI URL VIDEO DI SINI
-   ================================================== */
 
-const BACKGROUND_VIDEO_URL =
-  "https://cdn.videy.co/8X1yueep1.mp4";
+/* =========================================
+   BACKGROUND VIDEO
+   ========================================= */
 
-
-/* ==================================================
-   LOAD VIDEO
-   ================================================== */
-
-const backgroundVideo =
+const video =
   document.getElementById("backgroundVideo");
 
-function loadBackgroundVideo(){
 
-  backgroundVideo.src = BACKGROUND_VIDEO_URL;
+/* Pastikan video muted untuk autoplay mobile */
+video.muted = true;
 
-  backgroundVideo.load();
+video.setAttribute("muted", "");
+video.setAttribute("playsinline", "");
+video.setAttribute("webkit-playsinline", "");
 
-  const playVideo = () => {
-    backgroundVideo.play().catch(() => {
-      console.log("Autoplay tidak diizinkan oleh browser.");
-    });
-  };
 
-  if(backgroundVideo.readyState >= 2){
-    playVideo();
-  }else{
-    backgroundVideo.addEventListener(
-      "loadeddata",
-      playVideo,
-      {once:true}
+/* =========================================
+   PLAY VIDEO SETELAH SIAP
+   ========================================= */
+
+function startBackgroundVideo(){
+
+  video.play().catch(function(error){
+
+    console.log(
+      "Autoplay blocked:",
+      error
     );
-  }
+
+  });
+
 }
 
 
-/* ==================================================
-   VIDEO ERROR CHECK
-   ================================================== */
-
-backgroundVideo.addEventListener("error", function(){
-
-  console.log(
-    "Background video gagal dimuat.",
-    backgroundVideo.error
-  );
-
-});
+/* Tunggu sampai video siap */
+video.addEventListener(
+  "canplay",
+  startBackgroundVideo,
+  {once:true}
+);
 
 
-/* START */
-loadBackgroundVideo();
+/* Jika sudah siap ketika script dijalankan */
+if(video.readyState >= 3){
+
+  startBackgroundVideo();
+
+}
+
+
+/* =========================================
+   ERROR HANDLER
+   ========================================= */
+
+video.addEventListener(
+  "error",
+  function(){
+
+    console.log(
+      "Video CDN gagal dimuat:",
+      video.error
+    );
+
+  }
+);
+
 </script>
 
 </body>
