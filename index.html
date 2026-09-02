@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +13,36 @@
   --font-family:'Poppins',Arial,sans-serif;
   --color-text:#fff;
 }
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;min-height:100%;font-family:var(--font-family)}
-body{overflow-x:hidden;background:#111}
 
+*{
+  box-sizing:border-box;
+}
+
+html,
+body{
+  margin:0;
+  width:100%;
+  min-height:100%;
+  font-family:var(--font-family);
+}
+
+body{
+  overflow-x:hidden;
+  background:#111;
+}
+
+/* MAIN CONTAINER */
 .page-container{
   position:relative;
   width:100%;
   min-height:100vh;
+  min-height:100svh;
   overflow:hidden;
   color:#fff;
   background:#111;
 }
 
+/* BLURRED BACKGROUND VIDEO */
 .page-theme-content{
   position:fixed;
   z-index:0;
@@ -41,6 +59,7 @@ body{overflow-x:hidden;background:#111}
   pointer-events:none;
 }
 
+/* DARK OVERLAY */
 .page-container::after{
   content:"";
   position:fixed;
@@ -50,67 +69,74 @@ body{overflow-x:hidden;background:#111}
   pointer-events:none;
 }
 
+/* CENTER CONTENT */
 .page-wrap{
   position:relative;
   z-index:2;
   width:100%;
   max-width:720px;
   min-height:100vh;
+  min-height:100svh;
   margin:0 auto;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
+/* CONTENT */
 .content{
-  padding:0 20px 100px;
-  min-height:calc(100vh - 10rem);
+  width:100%;
+  padding:20px;
+  min-height:auto;
 }
 
+/* HEADER */
 .page-header{
   text-align:center;
-  padding-top:1px;
+  padding:0;
 }
 
-.profile-pic{
-  display:block;
-  width:100px;
-  height:100px;
-  margin:0 auto;
-  border-radius:10000px;
-  border:2px solid #fff;
-  object-fit:cover;
-  margin-top:65px;
-}
-
+/* TITLE */
 .header-title{
   color:#fff;
-  margin-top:16px;
+  margin:0;
   padding:10px;
   font-size:21px;
   font-weight:600;
+  line-height:1.4;
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
+/* SUBTITLE */
 .header-subtitle{
-  margin-top:8px;
+  margin-top:4px;
   color:#fff;
-  font-size:16px;
-  opacity:.7;
-  padding:0 40px;
+  font-size:15px;
+  opacity:.75;
+  padding:0 30px;
+  line-height:1.5;
+  text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
+/* BUTTON AREA */
 .user-blocks{
-  margin-top:8px;
+  margin-top:12px;
 }
 
 .user-block{
-  margin-top:2rem;
-  margin-bottom:2rem;
+  margin:14px 0;
 }
 
+/* BUTTON LINK */
 .user-block a{
   display:block;
   color:#000;
   text-decoration:none;
 }
 
+/* BUTTON */
 .content-btn{
   position:relative;
   display:flex;
@@ -119,27 +145,40 @@ body{overflow-x:hidden;background:#111}
   align-items:center;
   justify-content:center;
   padding:8px;
-  margin:16px 0;
+  margin:14px 0;
+
   border-radius:36px;
   background:#fff;
   color:#000;
-  box-shadow:none;
-  transition:transform .2s ease,opacity .2s ease;
+
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
+
+  transition:
+    transform .2s ease,
+    opacity .2s ease;
 }
 
+/* BUTTON HOVER */
 .content-btn:hover{
   transform:translateY(-2px);
   opacity:.95;
 }
 
+/* BUTTON PRESS */
+.content-btn:active{
+  transform:scale(.98);
+}
+
+/* BUTTON TEXT */
 .text-content{
   width:100%;
   text-align:center;
-  margin:16px;
+  margin:12px;
   font-size:18px;
   font-weight:700;
 }
 
+/* ANIMATED BORDER */
 .animated-border::before,
 .animated-border::after{
   content:"";
@@ -148,8 +187,10 @@ body{overflow-x:hidden;background:#111}
   left:-10px;
   right:-10px;
   bottom:-10px;
+
   border:2px solid rgba(255,255,255,.8);
   border-radius:36px;
+
   pointer-events:none;
   animation:clippath 3s infinite linear;
 }
@@ -159,43 +200,119 @@ body{overflow-x:hidden;background:#111}
 }
 
 @keyframes clippath{
-  0%,100%{clip-path:inset(0 0 96% 0 round 36px)}
-  25%{clip-path:inset(0 96% 0 0 round 36px)}
-  50%{clip-path:inset(96% 0 0 0 round 36px)}
-  75%{clip-path:inset(0 0 0 96% round 36px)}
+
+  0%,100%{
+    clip-path:inset(0 0 96% 0 round 36px);
+  }
+
+  25%{
+    clip-path:inset(0 96% 0 0 round 36px);
+  }
+
+  50%{
+    clip-path:inset(96% 0 0 0 round 36px);
+  }
+
+  75%{
+    clip-path:inset(0 0 0 96% round 36px);
+  }
+
 }
 
+/* FOOTER */
 footer{
-  position:relative;
+  position:absolute;
+  bottom:8px;
+  left:0;
   z-index:2;
+
   width:100%;
   text-align:center;
-  padding:20px;
+
+  padding:10px;
   color:rgba(255,255,255,.55);
   font-size:11px;
 }
 
+/* SMARTPHONE */
 @media(max-width:500px){
+
+  .page-container{
+    min-height:100svh;
+  }
+
   .page-theme-content{
     width:100vw;
-    height:100vh;
-    transform:translate(-50%,-50%) scale(1.12);
+    height:100svh;
+
+    transform:
+      translate(-50%,-50%)
+      scale(1.12);
+
     filter:blur(12px);
   }
 
+  .page-wrap{
+    min-height:100svh;
+    justify-content:center;
+  }
+
   .content{
-    padding-left:20px;
-    padding-right:20px;
+    padding:20px;
   }
 
-  .profile-pic{
-    width:100px;
-    height:100px;
-    margin-top:65px;
+  .header-title{
+    font-size:21px;
+    margin:0;
+    padding:8px 10px;
   }
 
-  .header-title{font-size:21px}
-  .text-content{font-size:18px}
+  .header-subtitle{
+    font-size:15px;
+    padding:0 20px;
+    margin-top:4px;
+  }
+
+  .user-block{
+    margin:12px 0;
+  }
+
+  .content-btn{
+    min-height:58px;
+    margin:12px 0;
+    border-radius:32px;
+  }
+
+  .text-content{
+    font-size:17px;
+    margin:12px;
+  }
+
+  footer{
+    bottom:4px;
+    padding:8px;
+  }
+}
+
+/* VERY SMALL PHONES */
+@media(max-height:650px){
+
+  .header-title{
+    font-size:19px;
+  }
+
+  .header-subtitle{
+    font-size:14px;
+  }
+
+  .content-btn{
+    min-height:52px;
+    margin:9px 0;
+  }
+
+  .text-content{
+    font-size:16px;
+  }
 }
 </style>
 </head>
@@ -204,10 +321,18 @@ footer{
 
 <div class="page-container">
 
-  <video class="page-theme-content" autoplay muted loop playsinline preload="auto">
+  <!-- BACKGROUND VIDEO -->
+  <video
+    class="page-theme-content"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto">
     <source src="background-video.mp4" type="video/mp4">
   </video>
 
+  <!-- CENTER CONTENT -->
   <div class="page-wrap">
 
     <div class="content">
@@ -224,25 +349,49 @@ footer{
 
       </header>
 
+      <!-- PLAY BUTTON -->
       <div class="user-block">
-        <a href="#" rel="nofollow noopener noreferrer">
+
+        <a
+          href="#"
+          rel="nofollow noopener noreferrer">
+
           <div class="content-btn">
-            <div class="text-content">PLAY VIDEO</div>
+
+            <div class="text-content">
+              PLAY VIDEO
+            </div>
+
           </div>
+
         </a>
+
       </div>
 
+      <!-- ALTERNATIVE BUTTON -->
       <div class="user-block">
-        <a href="#" rel="nofollow noopener noreferrer">
+
+        <a
+          href="#"
+          rel="nofollow noopener noreferrer">
+
           <div class="content-btn">
-            <div class="text-content">ALTERNATIVE</div>
+
+            <div class="text-content">
+              ALTERNATIVE
+            </div>
+
           </div>
+
         </a>
+
       </div>
 
     </div>
 
-    <footer>© 2026 Your Website</footer>
+    <footer>
+      © 2026 Your Website
+    </footer>
 
   </div>
 
@@ -250,3 +399,4 @@ footer{
 
 </body>
 </html>
+```
