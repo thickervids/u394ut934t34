@@ -20,7 +20,7 @@ html,
 body{
   margin:0;
   width:100%;
-  min-height:100%;
+  height:100%;
   font-family:var(--font-family);
 }
 
@@ -29,35 +29,43 @@ body{
   background:#111;
 }
 
-/* MAIN */
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
 .page-container{
   position:relative;
   width:100%;
   height:100vh;
   height:100svh;
   overflow:hidden;
-  color:#fff;
   background:#111;
+  color:#fff;
 }
 
-/* BACKGROUND VIDEO */
+/* =========================================
+   BACKGROUND VIDEO
+   ========================================= */
+
 .page-theme-content{
   position:fixed;
-  z-index:0;
+
   top:50%;
   left:50%;
 
+  z-index:0;
+
   width:100vw;
   height:100vh;
-  height:100svh;
 
   object-fit:cover;
 
   transform:
     translate(-50%,-50%)
-    scale(1.12);
+    scale(1.08);
 
-  filter:blur(12px);
+  filter:blur(14px);
+
   opacity:.78;
 
   pointer-events:none;
@@ -65,11 +73,16 @@ body{
   background:#111;
 }
 
-/* DARK OVERLAY */
+/* =========================================
+   DARK OVERLAY
+   ========================================= */
+
 .page-container::after{
   content:"";
+
   position:fixed;
   inset:0;
+
   z-index:1;
 
   background:rgba(0,0,0,.42);
@@ -77,9 +90,13 @@ body{
   pointer-events:none;
 }
 
-/* CENTER CONTENT */
+/* =========================================
+   CENTER CONTENT
+   ========================================= */
+
 .page-wrap{
   position:relative;
+
   z-index:2;
 
   width:100%;
@@ -91,17 +108,24 @@ body{
   margin:0 auto;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 }
 
-/* CONTENT */
+/* =========================================
+   CONTENT
+   ========================================= */
+
 .content{
   width:100%;
   padding:20px;
 }
 
-/* HEADER */
+/* =========================================
+   HEADER
+   ========================================= */
+
 .page-header{
   text-align:center;
   margin-bottom:14px;
@@ -110,6 +134,8 @@ body{
 .header-subtitle{
   margin:0;
 
+  padding:0 20px;
+
   color:#fff;
 
   font-size:16px;
@@ -117,15 +143,16 @@ body{
 
   line-height:1.5;
 
-  opacity:.85;
-
-  padding:0 20px;
+  opacity:.88;
 
   text-shadow:
     0 2px 8px rgba(0,0,0,.5);
 }
 
-/* BUTTON */
+/* =========================================
+   BUTTON
+   ========================================= */
+
 .user-block{
   width:100%;
   margin:12px 0;
@@ -137,6 +164,7 @@ body{
   width:100%;
 
   color:#000;
+
   text-decoration:none;
 }
 
@@ -146,6 +174,7 @@ body{
   display:flex;
 
   width:100%;
+
   min-height:58px;
 
   align-items:center;
@@ -153,9 +182,12 @@ body{
 
   padding:8px;
 
+  margin:12px 0;
+
   border-radius:32px;
 
   background:#fff;
+
   color:#000;
 
   box-shadow:
@@ -175,7 +207,6 @@ body{
   transform:scale(.98);
 }
 
-/* BUTTON TEXT */
 .text-content{
   width:100%;
 
@@ -184,10 +215,14 @@ body{
   text-align:center;
 
   font-size:17px;
+
   font-weight:700;
 }
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+   ========================================= */
+
 footer{
   position:absolute;
 
@@ -207,33 +242,52 @@ footer{
   font-size:11px;
 }
 
-/* MOBILE */
+/* =========================================
+   SMARTPHONE PORTRAIT
+   ========================================= */
+
 @media(max-width:500px){
 
   .page-container{
+    width:100vw;
     height:100svh;
   }
 
+  /*
+    Video memenuhi layar portrait.
+    object-fit:cover membuat video
+    mengikuti ukuran layar HP.
+  */
+
   .page-theme-content{
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
     width:100vw;
     height:100svh;
 
+    object-fit:cover;
+
     transform:
-      translate(-50%,-50%)
-      scale(1.12);
+      translate(-50%,-50%);
 
     filter:blur(12px);
+
+    opacity:.78;
   }
 
   .page-wrap{
+    width:100vw;
     height:100svh;
 
-    display:flex;
     align-items:center;
     justify-content:center;
   }
 
   .content{
+    width:100%;
     padding:20px;
   }
 
@@ -244,6 +298,9 @@ footer{
 
   .content-btn{
     min-height:58px;
+
+    margin:12px 0;
+
     border-radius:32px;
   }
 
@@ -252,8 +309,11 @@ footer{
   }
 }
 
-/* SMALL SMARTPHONES */
-@media(max-height:650px){
+/* =========================================
+   VERY SMALL PHONE
+   ========================================= */
+
+@media(max-width:500px) and (max-height:650px){
 
   .header-subtitle{
     font-size:14px;
@@ -269,6 +329,7 @@ footer{
 
   .content-btn{
     min-height:52px;
+    margin:9px 0;
   }
 
   .text-content{
@@ -282,7 +343,10 @@ footer{
 
 <div class="page-container">
 
-  <!-- BACKGROUND VIDEO -->
+  <!-- =====================================
+       BACKGROUND VIDEO
+       ===================================== -->
+
   <video
     id="backgroundVideo"
     class="page-theme-content"
@@ -300,7 +364,10 @@ footer{
   </video>
 
 
-  <!-- CENTER CONTENT -->
+  <!-- =====================================
+       CENTER CONTENT
+       ===================================== -->
+
   <div class="page-wrap">
 
     <div class="content">
@@ -315,6 +382,7 @@ footer{
 
 
       <!-- PLAY VIDEO -->
+
       <div class="user-block">
 
         <a
@@ -335,6 +403,7 @@ footer{
 
 
       <!-- ALTERNATIVE -->
+
       <div class="user-block">
 
         <a
@@ -359,6 +428,7 @@ footer{
 
 
   <!-- FOOTER -->
+
   <footer>
     © 2026 Your Website
   </footer>
@@ -369,26 +439,34 @@ footer{
 <script>
 
 /* =========================================
-   BACKGROUND VIDEO
+   VIDEO SETUP
    ========================================= */
 
 const video =
   document.getElementById("backgroundVideo");
 
 
-/* Pastikan video muted untuk autoplay mobile */
+/* Pastikan muted untuk autoplay */
+
 video.muted = true;
 
+video.defaultMuted = true;
+
 video.setAttribute("muted", "");
+
 video.setAttribute("playsinline", "");
-video.setAttribute("webkit-playsinline", "");
+
+video.setAttribute(
+  "webkit-playsinline",
+  ""
+);
 
 
 /* =========================================
-   PLAY VIDEO SETELAH SIAP
+   START VIDEO
    ========================================= */
 
-function startBackgroundVideo(){
+function startVideo(){
 
   video.play().catch(function(error){
 
@@ -402,24 +480,36 @@ function startBackgroundVideo(){
 }
 
 
-/* Tunggu sampai video siap */
+/* =========================================
+   WAIT FOR VIDEO
+   ========================================= */
+
+video.addEventListener(
+  "loadeddata",
+  startVideo,
+  {once:true}
+);
+
 video.addEventListener(
   "canplay",
-  startBackgroundVideo,
+  startVideo,
   {once:true}
 );
 
 
-/* Jika sudah siap ketika script dijalankan */
+/* =========================================
+   IF VIDEO IS ALREADY READY
+   ========================================= */
+
 if(video.readyState >= 3){
 
-  startBackgroundVideo();
+  startVideo();
 
 }
 
 
 /* =========================================
-   ERROR HANDLER
+   VIDEO ERROR
    ========================================= */
 
 video.addEventListener(
@@ -427,8 +517,7 @@ video.addEventListener(
   function(){
 
     console.log(
-      "Video CDN gagal dimuat:",
-      video.error
+      "Background video gagal dimuat."
     );
 
   }
