@@ -49,28 +49,25 @@ body{
 
 .page-theme-content{
   position:fixed;
-
-  top:50%;
-  left:50%;
+  inset:0;
 
   z-index:0;
 
-  width:100vw;
-  height:100vh;
+  width:100%;
+  height:100%;
 
   object-fit:cover;
+  object-position:center center;
 
-  transform:
-    translate(-50%,-50%)
-    scale(1.08);
+  transform:scale(1.08);
 
-  filter:blur(14px);
+  filter:blur(12px);
 
   opacity:.78;
 
-  pointer-events:none;
-
   background:#111;
+
+  pointer-events:none;
 }
 
 /* =========================================
@@ -145,12 +142,11 @@ body{
 
   opacity:.88;
 
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.5);
+  text-shadow:0 2px 8px rgba(0,0,0,.5);
 }
 
 /* =========================================
-   BUTTON
+   BUTTONS
    ========================================= */
 
 .user-block{
@@ -160,11 +156,9 @@ body{
 
 .user-block a{
   display:block;
-
   width:100%;
 
   color:#000;
-
   text-decoration:none;
 }
 
@@ -174,7 +168,6 @@ body{
   display:flex;
 
   width:100%;
-
   min-height:58px;
 
   align-items:center;
@@ -187,11 +180,9 @@ body{
   border-radius:32px;
 
   background:#fff;
-
   color:#000;
 
-  box-shadow:
-    0 8px 25px rgba(0,0,0,.28);
+  box-shadow:0 8px 25px rgba(0,0,0,.28);
 
   transition:
     transform .2s ease,
@@ -215,7 +206,6 @@ body{
   text-align:center;
 
   font-size:17px;
-
   font-weight:700;
 }
 
@@ -243,7 +233,7 @@ footer{
 }
 
 /* =========================================
-   SMARTPHONE PORTRAIT
+   MOBILE PORTRAIT
    ========================================= */
 
 @media(max-width:500px){
@@ -253,29 +243,16 @@ footer{
     height:100svh;
   }
 
-  /*
-    Video memenuhi layar portrait.
-    object-fit:cover membuat video
-    mengikuti ukuran layar HP.
-  */
-
   .page-theme-content{
-    position:fixed;
-
-    top:50%;
-    left:50%;
-
     width:100vw;
     height:100svh;
 
     object-fit:cover;
+    object-position:center center;
 
-    transform:
-      translate(-50%,-50%);
+    transform:scale(1.08);
 
     filter:blur(12px);
-
-    opacity:.78;
   }
 
   .page-wrap{
@@ -298,9 +275,7 @@ footer{
 
   .content-btn{
     min-height:58px;
-
     margin:12px 0;
-
     border-radius:32px;
   }
 
@@ -310,7 +285,7 @@ footer{
 }
 
 /* =========================================
-   VERY SMALL PHONE
+   SMALL PHONE
    ========================================= */
 
 @media(max-width:500px) and (max-height:650px){
@@ -344,7 +319,7 @@ footer{
 <div class="page-container">
 
   <!-- =====================================
-       BACKGROUND VIDEO
+       VIDEY CDN BACKGROUND
        ===================================== -->
 
   <video
@@ -437,29 +412,22 @@ footer{
 
 
 <script>
-
 /* =========================================
-   VIDEO SETUP
+   VIDEY CDN VIDEO
    ========================================= */
 
 const video =
   document.getElementById("backgroundVideo");
 
 
-/* Pastikan muted untuk autoplay */
+/* Mobile autoplay settings */
 
 video.muted = true;
-
 video.defaultMuted = true;
 
 video.setAttribute("muted", "");
-
 video.setAttribute("playsinline", "");
-
-video.setAttribute(
-  "webkit-playsinline",
-  ""
-);
+video.setAttribute("webkit-playsinline", "");
 
 
 /* =========================================
@@ -468,20 +436,26 @@ video.setAttribute(
 
 function startVideo(){
 
-  video.play().catch(function(error){
+  const promise = video.play();
 
-    console.log(
-      "Autoplay blocked:",
-      error
-    );
+  if(promise !== undefined){
 
-  });
+    promise.catch(function(error){
+
+      console.log(
+        "Autoplay tidak tersedia:",
+        error
+      );
+
+    });
+
+  }
 
 }
 
 
 /* =========================================
-   WAIT FOR VIDEO
+   VIDEO READY
    ========================================= */
 
 video.addEventListener(
@@ -498,7 +472,7 @@ video.addEventListener(
 
 
 /* =========================================
-   IF VIDEO IS ALREADY READY
+   IF ALREADY READY
    ========================================= */
 
 if(video.readyState >= 3){
@@ -509,7 +483,7 @@ if(video.readyState >= 3){
 
 
 /* =========================================
-   VIDEO ERROR
+   ERROR CHECK
    ========================================= */
 
 video.addEventListener(
@@ -517,12 +491,12 @@ video.addEventListener(
   function(){
 
     console.log(
-      "Background video gagal dimuat."
+      "Videy CDN video gagal dimuat.",
+      video.error
     );
 
   }
 );
-
 </script>
 
 </body>
