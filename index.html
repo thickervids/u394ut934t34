@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,26 +93,18 @@ body{
   padding:0;
 }
 
-.header-title{
-  color:#fff;
-  margin:0;
-  padding:8px 10px;
-  font-size:21px;
-  font-weight:600;
-  line-height:1.4;
-  text-shadow:0 2px 8px rgba(0,0,0,.4);
-}
-
 .header-subtitle{
-  margin-top:4px;
+  margin:0 0 10px;
   color:#fff;
-  font-size:15px;
-  opacity:.75;
-  padding:0 30px;
+  font-size:16px;
+  font-weight:500;
+  opacity:.85;
+  padding:0 20px;
   line-height:1.5;
   text-shadow:0 2px 8px rgba(0,0,0,.4);
 }
 
+/* BUTTON */
 .user-block{
   margin:12px 0;
 }
@@ -175,7 +168,7 @@ footer{
   font-size:11px;
 }
 
-/* SMARTPHONE */
+/* MOBILE */
 @media(max-width:500px){
 
   .page-container{
@@ -198,13 +191,9 @@ footer{
     padding:20px;
   }
 
-  .header-title{
-    font-size:21px;
-  }
-
   .header-subtitle{
     font-size:15px;
-    padding:0 20px;
+    padding:0 15px;
   }
 
   .content-btn{
@@ -219,10 +208,6 @@ footer{
 
 /* SMALL PHONE */
 @media(max-height:650px){
-
-  .header-title{
-    font-size:19px;
-  }
 
   .header-subtitle{
     font-size:14px;
@@ -252,7 +237,8 @@ footer{
     muted
     loop
     playsinline
-    preload="auto">
+    preload="metadata"
+    webkit-playsinline>
   </video>
 
   <div class="page-wrap">
@@ -260,11 +246,9 @@ footer{
     <div class="content">
 
       <header class="page-header">
-
         <div class="header-subtitle">
           Press Continue to watch the video.
         </div>
-
       </header>
 
       <!-- PLAY VIDEO -->
@@ -301,7 +285,7 @@ footer{
 
 <script>
 /* ==================================================
-   GANTI URL VIDEO DI SINI SAJA
+   GANTI URL VIDEO DI SINI
    ================================================== */
 
 const BACKGROUND_VIDEO_URL =
@@ -309,21 +293,54 @@ const BACKGROUND_VIDEO_URL =
 
 
 /* ==================================================
-   LOAD BACKGROUND VIDEO
+   LOAD VIDEO
    ================================================== */
 
 const backgroundVideo =
   document.getElementById("backgroundVideo");
 
-backgroundVideo.src = BACKGROUND_VIDEO_URL;
-backgroundVideo.load();
+function loadBackgroundVideo(){
 
-backgroundVideo.play().catch(function(){
-  // Browser dapat menahan autoplay.
-  // Karena video muted + playsinline, biasanya autoplay
-  // tetap diperbolehkan pada smartphone.
+  backgroundVideo.src = BACKGROUND_VIDEO_URL;
+
+  backgroundVideo.load();
+
+  const playVideo = () => {
+    backgroundVideo.play().catch(() => {
+      console.log("Autoplay tidak diizinkan oleh browser.");
+    });
+  };
+
+  if(backgroundVideo.readyState >= 2){
+    playVideo();
+  }else{
+    backgroundVideo.addEventListener(
+      "loadeddata",
+      playVideo,
+      {once:true}
+    );
+  }
+}
+
+
+/* ==================================================
+   VIDEO ERROR CHECK
+   ================================================== */
+
+backgroundVideo.addEventListener("error", function(){
+
+  console.log(
+    "Background video gagal dimuat.",
+    backgroundVideo.error
+  );
+
 });
+
+
+/* START */
+loadBackgroundVideo();
 </script>
 
 </body>
 </html>
+```
